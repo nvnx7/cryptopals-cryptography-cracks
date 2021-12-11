@@ -1,18 +1,8 @@
-use base64::encode;
-use std::num::ParseIntError;
-
-fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, ParseIntError> {
-    (0..hex.len())
-        .step_by(2)
-        .map(|i| u8::from_str_radix(&hex[i..i + 2], 16))
-        .collect()
-}
+use base64;
+use hex;
 
 pub fn convert_hex_to_base64(hex: &str) -> String {
-    match hex_to_bytes(hex) {
-        Ok(bytes) => encode(bytes),
-        _ => panic!("Error, check input"),
-    }
+    base64::encode(hex::decode(hex).unwrap())
 }
 
 #[cfg(test)]
