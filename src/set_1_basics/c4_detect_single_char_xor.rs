@@ -40,7 +40,7 @@ pub fn detect_message(path: &str) -> String {
 mod test {
     use super::detect_message;
     #[test]
-    fn detect() {
+    fn test_c4() {
         let output = detect_message("files/set_1/4_strings.txt");
         let message = "Now that the party is jumping\n";
         assert_eq!(output, message);

@@ -19,7 +19,7 @@ pub fn repeated_key_xor(message: &str, key: &str) -> String {
 mod test {
     use super::repeated_key_xor;
     #[test]
-    fn repeated_xor() {
+    fn test_c5() {
         let message = "Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal";
         let repeated_key = "ICE";
 
