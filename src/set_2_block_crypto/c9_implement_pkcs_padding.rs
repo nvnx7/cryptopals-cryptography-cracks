@@ -10,8 +10,12 @@ mod test {
     use super::pad_pkcs7;
     #[test]
     fn test_c9() {
-        let output = pad_pkcs7("YELLOW SUBMARINE", 20);
-        let padded = "YELLOW SUBMARINE\x04\x04\x04\x04";
-        assert_eq!(output, padded);
+        let output1 = pad_pkcs7("YELLOW SUBMARINE", 20);
+        let padded1 = "YELLOW SUBMARINE\x04\x04\x04\x04";
+        assert_eq!(output1, padded1);
+
+        let output2 = pad_pkcs7("YELLOW SUBMARINE", 16);
+        let padded2 = format!("{}{}", "YELLOW SUBMARINE", "\x10".repeat(16));
+        assert_eq!(output2, padded2);
     }
 }
