@@ -14,8 +14,12 @@ mod test {
         let padded1 = "YELLOW SUBMARINE\x04\x04\x04\x04";
         assert_eq!(output1, padded1);
 
-        let output2 = pad_pkcs7("YELLOW SUBMARINE", 16);
-        let padded2 = format!("{}{}", "YELLOW SUBMARINE", "\x10".repeat(16));
+        let output2 = pad_pkcs7("YELLOW SUBMARINEYELLOW SUBMARINE", 16);
+        let padded2 = format!(
+            "{}{}",
+            "YELLOW SUBMARINEYELLOW SUBMARINE",
+            "\x10".repeat(16)
+        );
         assert_eq!(output2, padded2);
     }
 }
