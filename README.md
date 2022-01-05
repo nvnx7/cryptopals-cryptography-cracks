@@ -12,3 +12,5 @@ Test a specific challenge:
 cargo test test_c<x>
 ```
 where `x` is challenge number.
+
+Documented explanations of challenges series on [DEV](https://dev.to/thenvn/cryptopals-crypto-challenges-using-rust-convert-hex-to-base64-jkc)
