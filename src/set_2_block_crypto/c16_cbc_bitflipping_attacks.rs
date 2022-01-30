@@ -2,7 +2,7 @@ use crate::utils::aes::{aes128_cbc_decrypt, aes128_cbc_encrypt};
 use crate::utils::bitwise::xor_bytes;
 
 const UNKNOWN_KEY: &[u8] = b"YELLOW SUBMARINE";
-const UNKNOWN_IV: &[u8] = b"YELLOW SUBMARINE";
+const UNKNOWN_IV: &[u8] = b"PURPLE SUBMARINE";
 
 pub fn encrypt_data(data: &str) -> Vec<u8> {
     if data.chars().any(|c| c == ';' || c == '=') {
@@ -58,7 +58,7 @@ pub fn bit_flip_attack(block_size: usize) -> Vec<u8> {
 
 #[cfg(test)]
 mod test {
-    use super::{bit_flip_attack, decrypt_and_find_admin, encrypt_data};
+    use super::{bit_flip_attack, decrypt_and_find_admin};
     #[test]
     fn test_c16() {
         let cipherbytes = bit_flip_attack(16);
