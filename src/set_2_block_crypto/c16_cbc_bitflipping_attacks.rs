@@ -12,12 +12,12 @@ pub fn encrypt_data(data: &str) -> Vec<u8> {
             "comment1=cooking%20MCs;userdata={};comment2=%20like%20a%20pound%20of%20bacon",
             data
         );
-        aes128_cbc_encrypt(inp.as_bytes(), UNKNOWN_KEY, UNKNOWN_IV)
+        aes128_cbc_encrypt(inp.as_bytes(), UNKNOWN_KEY, UNKNOWN_IV).unwrap()
     }
 }
 
 pub fn decrypt_and_find_admin(cipherbytes: &[u8]) -> Option<usize> {
-    let msg_bytes = aes128_cbc_decrypt(cipherbytes, UNKNOWN_KEY, UNKNOWN_IV);
+    let msg_bytes = aes128_cbc_decrypt(cipherbytes, UNKNOWN_KEY, UNKNOWN_IV).unwrap();
     let msg = String::from_utf8_lossy(&msg_bytes);
     msg.find(";admin=true;")
 }

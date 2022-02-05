@@ -14,7 +14,7 @@ fn unknown_key_encrypt(msg: &[u8]) -> Vec<u8> {
         .chain(append_bytes.iter())
         .cloned()
         .collect();
-    aes128_ecb_encrypt(&buffer, UNKNOWN_KEY)
+    aes128_ecb_encrypt(&buffer, UNKNOWN_KEY).unwrap()
 }
 
 pub fn detect_block_size() -> usize {

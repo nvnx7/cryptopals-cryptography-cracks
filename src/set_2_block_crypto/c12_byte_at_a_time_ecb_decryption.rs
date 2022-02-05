@@ -8,7 +8,7 @@ const UNKNOWN_SECRET: &str = "Um9sbGluJyBpbiBteSA1LjAKV2l0aCBteSByYWctdG9wIGRvd2
 fn unknown_key_encrypt(msg: &[u8]) -> Vec<u8> {
     let append_bytes = base64::decode(UNKNOWN_SECRET).unwrap();
     let buffer: Vec<u8> = msg.iter().chain(append_bytes.iter()).cloned().collect();
-    aes128_ecb_encrypt(&buffer, UNKNOWN_KEY)
+    aes128_ecb_encrypt(&buffer, UNKNOWN_KEY).unwrap()
 }
 
 pub fn detect_block_size() -> usize {

@@ -20,11 +20,11 @@ pub fn profile_for(email: &str) -> String {
 
 pub fn encrypt_user_profile(profile: &str) -> Vec<u8> {
     // let rand_key: Vec<u8> = (0..16).map(|_| rand::random::<u8>()).collect();
-    aes128_ecb_encrypt(profile.as_bytes(), UNKNOWN_KEY)
+    aes128_ecb_encrypt(profile.as_bytes(), UNKNOWN_KEY).unwrap()
 }
 
 pub fn decode_user_profile(cipherbytes: &[u8]) -> HashMap<String, String> {
-    let bytes = aes128_ecb_decrypt(cipherbytes, UNKNOWN_KEY);
+    let bytes = aes128_ecb_decrypt(cipherbytes, UNKNOWN_KEY).unwrap();
     parse_key_value(&String::from_utf8_lossy(&bytes))
 }
 

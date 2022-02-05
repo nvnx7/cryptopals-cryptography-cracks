@@ -33,9 +33,9 @@ fn random_encryption(msg: &[u8]) -> (Vec<u8>, EncryptionMode) {
     let cipherbytes;
     if use_ecb {
         mode = EncryptionMode::ECB;
-        cipherbytes = aes128_ecb_encrypt(&msg_bytes, &rand_key);
+        cipherbytes = aes128_ecb_encrypt(&msg_bytes, &rand_key).unwrap();
     } else {
-        cipherbytes = aes128_cbc_encrypt(&msg_bytes, &rand_key, &rand_iv);
+        cipherbytes = aes128_cbc_encrypt(&msg_bytes, &rand_key, &rand_iv).unwrap();
         mode = EncryptionMode::CBC;
     }
 
